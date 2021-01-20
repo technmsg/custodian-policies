@@ -1,0 +1,6 @@
+policies:
+    - name: rg-empty
+      description: list empty resource groups from subscription
+      resource: azure.resourcegroup
+      filters:
+        - type: empty-group

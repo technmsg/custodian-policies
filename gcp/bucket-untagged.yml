@@ -1,0 +1,6 @@
+policies:
+  - name: untagged-buckets
+    resource: gcp.bucket
+    filters:
+       - "labels.owner": absent
+

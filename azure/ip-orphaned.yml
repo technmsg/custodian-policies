@@ -1,0 +1,8 @@
+policies:
+    - name: orphaned-ip
+      description: Public IPs that are not attached to any Network Interfaces
+      resource: azure.publicip
+      filters:
+      - type: value
+        key: properties.ipConfiguration
+        value: null

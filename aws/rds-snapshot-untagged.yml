@@ -1,0 +1,10 @@
+policies:
+
+  - name: rds-snapshot-untagged
+    resource: rds-snapshot
+    comments: db snapshots without owner tag & older than 10 days
+    filters:
+      - type: age
+        days: 10
+        op: ge
+      - "tag:owner": absent      

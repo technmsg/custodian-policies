@@ -1,0 +1,14 @@
+policies:
+  - name: iam-user-old-access-key
+    description: |
+      Retrieve all IAM users with active access keys that are older than 90 days
+    resource: iam-user
+    filters:
+      - type: access-key
+        key: Status
+        value: Active
+      - type: access-key
+        key: CreateDate
+        value: 90
+        value_type: age
+        op: ge

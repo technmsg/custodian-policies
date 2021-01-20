@@ -1,0 +1,11 @@
+policies:
+
+  - name: vpc-untagged
+    description: |
+      report all untagged vpc, ignoring default VPC
+    resource: vpc
+    filters:
+      - "tag:owner": absent
+      - type: value
+        key: isDefault
+        value: false

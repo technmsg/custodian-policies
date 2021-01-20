@@ -1,0 +1,9 @@
+policies:
+  - name: iam-user-unused
+    description: |
+      Retrieve all IAM users unused for ANY service in the last 365 days
+    resource: iam-user
+    filters:
+      - type: usage
+        match-operator: all
+        LastAuthenticated: null

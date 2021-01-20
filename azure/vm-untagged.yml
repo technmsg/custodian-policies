@@ -1,0 +1,6 @@
+policies:
+    - name: vm-untagged
+      description: list all untagged Azure VMs
+      resource: azure.vm
+      filters:
+        - "tag:owner": absent

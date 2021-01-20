@@ -1,0 +1,6 @@
+policies:
+
+  - name: iam-user-untagged
+    resource: iam-user
+    filters:
+      - "tag:owner": absent

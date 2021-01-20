@@ -1,0 +1,11 @@
+policies:
+    - name: orphaned-nic
+      description: list network interfaces not attached to any VMs or hosted workloads (eg NetApp Files volumes)
+      resource: azure.networkinterface
+      filters:
+      - type: value
+        key: properties.virtualMachine
+        value: null
+      - type: value
+        key: properties.hostedWorkloads
+        value: null

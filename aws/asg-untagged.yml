@@ -1,0 +1,6 @@
+policies:
+
+  - name: asg-untagged
+    resource: asg
+    filters:
+      - "tag:owner": absent

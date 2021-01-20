@@ -1,0 +1,10 @@
+policies:
+
+  - name: ebs-volumes-untagged
+    resource: ebs
+    comments: |
+      volumes without owner tag
+      only include those unattached
+    filters:
+      - "tag:owner": absent      
+      - Attachments: []

@@ -1,0 +1,10 @@
+policies:
+
+  - name: ami-ancient-report
+    resource: ami
+    comment: |
+      Report on all images older than 90 days which should be de-registered.
+    filters:
+      - type: image-age
+        days: 90
+

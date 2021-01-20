@@ -1,0 +1,20 @@
+policies:
+
+  - name: sg-high-risk
+    resource: security-group
+    description: |
+      Report any rule from a security group that allows 0.0.0.0/0 or ::/0 (IPv6) ingress
+      Don't include any groups that have a documented exemption tag
+      Uncomment actions to remove matching rules (optional)
+    filters:
+      - "tag:exemption": absent
+      - or:
+            - type: ingress
+              Cidr:
+                value: "0.0.0.0/0"
+            - type: ingress
+              CidrV6:
+                value: "::/0"
+ #   actions:
+ #       - type: remove-permissions
+ #         ingress: matched

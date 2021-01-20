@@ -1,0 +1,4 @@
+policies:
+    - name: vm-all
+      description: list all Azure VMs
+      resource: azure.vm

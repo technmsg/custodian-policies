@@ -1,0 +1,38 @@
+policies:
+
+- name: s3-tag-compliance-mark
+  resource: s3
+  comment: |
+    Find all S3 buckets that are not conformant
+    to tagging policies, and tag them for deletion in 7 days.
+  filters:
+    - "tag:owner": absent
+    - "tag:maid_status": absent
+  actions:
+    - type: mark-for-op
+      op: delete
+      days: 7
+
+- name: s3-tag-compliance-unmark
+  resource: s3
+  comment: |
+    Any buckets which have previously been marked as
+    non compliant with tag policies, that are now compliant
+    should be unmarked as non-compliant.
+  filters:
+    - "tag:maid_status": not-null
+    - "tag:owner": not-null
+  actions:
+    - unmark
+
+- name: s3-tag-compliance-delete
+  resource: s3
+  comment: |
+    Delete all buckets marked for deletion
+  filters:
+    - type: marked-for-op
+      op: delete
+    - or:
+        - "tag:owner": absent
+#  actions:
+#    - type: delete

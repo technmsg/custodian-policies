@@ -1,0 +1,6 @@
+policies:
+    - name: image-untagged
+      resource: azure.image
+      comments: images without owner tag
+      filters:
+        - "tag:owner": absent

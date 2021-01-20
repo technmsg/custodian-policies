@@ -1,0 +1,6 @@
+policies:
+
+  - name: alb-untagged
+    resource: app-elb
+    filters:
+      - "tag:owner": absent

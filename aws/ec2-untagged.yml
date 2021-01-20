@@ -1,0 +1,16 @@
+policies:
+
+  - name: ec2-untagged
+    resource: ec2
+    comments: list ec2 instances without an owner tag
+    filters:
+      - "tag:owner": absent
+
+  - name: ec2-untagged-multiple
+    resource: ec2
+    comment: |
+      list ec2 instances lacking multiple required tags
+    filters:
+      - or:
+          - "tag:owner": absent
+          - "tag:project": absent

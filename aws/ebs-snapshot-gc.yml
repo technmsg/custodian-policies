@@ -1,0 +1,11 @@
+policies:
+
+  - name: ebs-snapshot-gc
+    resource: ebs-snapshot
+    comment: |
+      EBS snapshots untagged & older than 30 days
+    filters:
+      - type: age
+        days: 30
+        op: ge
+      - "tag:owner": absent

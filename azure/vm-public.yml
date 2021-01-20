@@ -1,0 +1,8 @@
+policies:
+    - name: vm-public
+      description: list all VMs with public IPs
+      resource: azure.vm
+      filters:
+      - type: network-interface
+        key: 'properties.ipConfigurations[].properties.publicIPAddress.id'
+        value: not-null

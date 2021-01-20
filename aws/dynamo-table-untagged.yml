@@ -1,0 +1,7 @@
+policies:
+
+  - name: dynamo-untagged
+    resource: dynamodb-table
+    comments: dynamodb tables without owner tag
+    filters:
+      - "tag:owner": absent

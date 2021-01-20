@@ -1,0 +1,14 @@
+policies:
+
+  - name: asg-invalid-configuration
+    description: |
+      Verify ASGs have valid configurations, checks for
+        invalid subnets
+        invalid security groups
+        invalid key pair name
+        invalid launch config volume snapshots
+        invalid AMIs
+        invalid ELB health check
+    resource: asg
+    filters:
+      - invalid

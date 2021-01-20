@@ -1,0 +1,9 @@
+policies:
+    - name: orphaned-disk
+      description: list disks that are not being managed by a VM
+      resource: azure.disk
+      filters:
+      - type: value
+        key: managedBy
+        value: null
+

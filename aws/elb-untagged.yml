@@ -1,0 +1,6 @@
+policies:
+
+  - name: elb-untagged
+    resource: elb
+    filters:
+      - "tag:owner": absent

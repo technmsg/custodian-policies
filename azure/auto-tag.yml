@@ -1,0 +1,47 @@
+policies:
+
+  - name: rg-auto-tag-created-date
+    resource: azure.resourcegroup
+    description: |
+      Tag all existing resource groups with the 'CreatedDate' tag
+    filters:
+      - "tag:CreatedDate": absent
+    actions:
+      - type: auto-tag-date
+        tag: CreatedDate
+        format: "%m-%d-%Y"
+
+  - name: image-auto-tag-created-date
+    resource: azure.image
+    description: |
+      Tag all existing images with the 'CreatedDate' tag
+    filters:
+      - "tag:CreatedDate": absent
+    actions:
+      - type: auto-tag-date
+        tag: CreatedDate
+        format: "%m-%d-%Y"
+
+  - name: pgsql-auto-tag-created-date
+    resource: azure.postgresql-server
+    description: |
+      Tag all existing postgresql-server with the 'CreatedDate' tag
+    filters:
+      - "tag:CreatedDate": absent
+    actions:
+      - type: auto-tag-date
+        tag: CreatedDate
+        format: "%m-%d-%Y"
+
+  - name: image-untagged
+    resource: azure.image 
+    comments: images without owner tag
+    filters:
+      - "tag:owner": absent
+
+  - name: pgsql-untagged
+    resource: azure.postgresql-server
+    comments: untagged pgsql servers
+    filters:
+      - "tag:owner": absent
+

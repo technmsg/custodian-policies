@@ -1,0 +1,11 @@
+policies:
+
+  - name: sg-untagged
+    resource: security-group
+    description: security groups without owner tag, ignoring default VPC SG
+    filters:
+      - "tag:owner": absent
+      - not:
+        - type: value
+          key: GroupName
+          value: default

@@ -1,0 +1,6 @@
+policies:
+  - name: untagged-dbs
+    resource: gcp.sql-instance
+    filters:
+       - "settings.userLabels.owner": absent
+

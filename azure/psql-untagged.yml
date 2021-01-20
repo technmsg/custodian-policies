@@ -1,0 +1,6 @@
+policies:
+    - name: pgsql-untagged
+      resource: azure.postgresql-server
+      comments: untagged pgsql servers
+      filters:
+        - "tag:owner": absent

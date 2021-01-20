@@ -1,0 +1,5 @@
+policies:
+  - name: untagged-instances
+    resource: gcp.instance
+    filters:
+       - "labels.owner": absent

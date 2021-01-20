@@ -1,0 +1,6 @@
+policies:
+
+  - name: efs-untagged
+    resource: efs
+    filters:
+      - "tag:owner": absent
